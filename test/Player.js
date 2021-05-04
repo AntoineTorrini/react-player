@@ -148,13 +148,8 @@ test('progress()', t => {
   })
   instance.isReady = true
   instance.progress()
-  instance.progress() // Call twice to ensure onProgress is not called again
-  t.true(onProgress.calledOnceWith({
-    loaded: 0.5,
-    loadedSeconds: 20,
-    played: 0.25,
-    playedSeconds: 10
-  }))
+  instance.progress()
+  t.true(onProgress.calledTwice)
 })
 
 test('seekTo() - seconds', t => {

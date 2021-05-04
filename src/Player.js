@@ -128,10 +128,8 @@ export default class Player extends Component {
           progress.loadedSeconds = loadedSeconds
           progress.loaded = loadedSeconds / duration
         }
-        // Only call onProgress if values have changed
-        if (progress.playedSeconds !== this.prevPlayed || progress.loadedSeconds !== this.prevLoaded) {
-          this.props.onProgress(progress)
-        }
+        // always call onProgress as a way to expose the internal isPlaying
+        this.props.onProgress(progress)
         this.prevPlayed = progress.playedSeconds
         this.prevLoaded = progress.loadedSeconds
       }
